@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuboisAnke_Project.View.MilestoneAdd"
+             xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:radialMenu="clr-namespace:Syncfusion.SfRadialMenu.XForms;assembly=Syncfusion.SfRadialMenu.XForms"
+             xmlns:behaviors="clr-namespace:DuboisAnke_Project.Behaviours">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="ADD A MILESTONE"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="PICK A PROJECT"
+                           Style="{DynamicResource MilestoneTitle}" />
+                    <Picker Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            x:Name="projectPicker"
+                            Title="Select a project"
+                            Style="{DynamicResource ProjectPicker}"
+                            SelectedIndexChanged="ProjectWasSelected" />
+                    <Label Text="MILESTONE"
+                           Style="{DynamicResource MilestoneTitle}"
+                           Grid.Row="2" />
+                    <Entry x:Name="milestoneNameEntry"
+                           Placeholder="Enter the name of the milestone"
+                           Grid.Row="3"
+                           Grid.ColumnSpan="2"
+                           Style="{DynamicResource EntryStyle}">
+                        <Entry.Behaviors>
+                            <behaviors:MaxLengthValidatorBehaviour />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label Grid.Row="4"
+                           Text="CHOOSE COLOR"
+                           Style="{DynamicResource MilestoneTitle}"
+                           VerticalTextAlignment="Center" />
+                    <Button Grid.Row="4"
+                            Grid.Column="1"
+                            Style="{DynamicResource InfoButton}"
+                            Margin="0,0,125,0"
+                            Clicked="BtnInfoClicked" />
+                    <radialMenu:SfRadialMenu Grid.Row="5"
+                                             Grid.ColumnSpan="2"
+                                             CenterButtonBackgroundColor="#FFA299"
+                                             x:Name="hexCodeSelected">
+                        <radialMenu:SfRadialMenu.Items>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#9B2226"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#AE2012"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#BB3E03"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#EE9B00"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#4A4E69"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#bc4749"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#0A9396"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#005F73"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                        </radialMenu:SfRadialMenu.Items>
+                    </radialMenu:SfRadialMenu>
+                    <Label Grid.Row="6"
+                           Text="STARTDATE"
+                           Style="{DynamicResource MilestoneTitle}" />
+                    <DatePicker Grid.Row="7"
+                                Grid.ColumnSpan="2"
+                                Style="{DynamicResource DatePicker}"
+                                x:Name="startDateEntry" />
+                    <Label Grid.Row="8"
+                           Text="ENDDATE"
+                           Style="{DynamicResource MilestoneTitle}" />
+                    <DatePicker Grid.Row="9"
+                                Grid.ColumnSpan="2"
+                                Style="{DynamicResource DatePicker}"
+                                x:Name="endDateEntry" />
+                    <Label Grid.Row="10"
+                           Text="DESCRIPTION"
+                           Style="{DynamicResource MilestoneTitle}" />
+                    <Entry Grid.Row="11"
+                           Grid.ColumnSpan="2"
+                           x:Name="shortDescriptionEntry"
+                           Placeholder="Enter a short description"
+                           Style="{DynamicResource EntryStyle}" />
+                </Grid>
+
+                <Button x:Name="btnAddMilestone"
+                        Text="ADD MILESTONE"
+                        Clicked="AddMilestone"
+                        Style="{DynamicResource RegularButton}"
+                        Margin="5" />
+                <ImageButton Style="{DynamicResource HomeButton}"
+                             Clicked="NavigateToHome"
+                             VerticalOptions="EndAndExpand" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

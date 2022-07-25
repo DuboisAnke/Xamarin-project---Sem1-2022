@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuboisAnke_Project.View.About">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="INFO:"
+                   Style="{DynamicResource RegularTitle}"
+                   FontSize="32" />
+            <Label Text="This app will give users a visual representation of time, allowing people with, for instance ADHD, ADD or other learning impairments to have a better understanding of the time still left before the next milestone or deadline in a project, giving them a better sense of control over their own life."
+                   Style="{DynamicResource RegularText}"></Label>
+            <Label Text="We achieve this by instead of just showing them a date, they get a visual representation in the form of a progressbar. The progressbar that isn't filled very much is something you'd need to look at first!"
+                   Style="{DynamicResource RegularText}"></Label>
+            <Label Text="THE DEVELOPER: "
+                   Style="{DynamicResource RegularTitle}"
+                   FontSize="24"/>
+            <Label Text="This app was made by Anke Dubois, second year student at PXL Hogeschool Limburg for the course C# Mobile."
+                   Style="{DynamicResource RegularText}"></Label>
+            <Label Text="I'm a 28 year old grad student in programming, currently running an internship as a game developer. I have pretty bad ADHD myself and wanted to create something that would help me keep track of my projects and TO-DO list more easily. The idea for the app came to me when I saw a whiteboard they used at a company, which was a simple timeline with milestones drawn on it."
+                   Style="{DynamicResource RegularText}"></Label>
+            <ImageButton Style="{DynamicResource HomeButton}"
+                         Clicked="NavigateToHome"
+                         VerticalOptions="EndAndExpand"></ImageButton>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

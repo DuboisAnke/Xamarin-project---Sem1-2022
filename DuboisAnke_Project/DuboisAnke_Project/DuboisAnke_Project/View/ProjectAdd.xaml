@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuboisAnke_Project.View.ProjectAdd"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:radialMenu="clr-namespace:Syncfusion.SfRadialMenu.XForms;assembly=Syncfusion.SfRadialMenu.XForms"
+             xmlns:behaviors="clr-namespace:DuboisAnke_Project.Behaviours">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="ADD A PROJECT"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="PROJECT"
+                           Style="{DynamicResource ProjectTitle}" />
+                    <Entry Grid.Row="1"
+                           Grid.ColumnSpan="2"
+                           Placeholder="Enter the name of the project"
+                           x:Name="projectNameEntry"
+                           Style="{DynamicResource EntryStyle}">
+                        <Entry.Behaviors>
+                            <behaviors:MaxLengthValidatorBehaviour />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label Grid.Row="2"
+                           Text="CHOOSE COLOR"
+                           Style="{DynamicResource ProjectTitle}"
+                           VerticalTextAlignment="Center" />
+                    <Button Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="0,0,125,0"
+                            Clicked="BtnInfoClicked"
+                            Style="{DynamicResource InfoButton}" />
+                    <radialMenu:SfRadialMenu Grid.Row="3"
+                                             Grid.ColumnSpan="2"
+                                             CenterButtonBackgroundColor="#FFA299"
+                                             x:Name="hexCodeSelected">
+                        <radialMenu:SfRadialMenu.Items>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#9B2226"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#AE2012"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#BB3E03"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#EE9B00"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#4A4E69"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#bc4749"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#0A9396"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                            <radialMenu:SfRadialMenuItem BackgroundColor="#005F73"
+                                                         ItemTapped="RadialMenuItemWasTapped">
+                            </radialMenu:SfRadialMenuItem>
+                        </radialMenu:SfRadialMenu.Items>
+                    </radialMenu:SfRadialMenu>
+                    <Label Grid.Row="4"
+                           Text="STARTDATE"
+                           Style="{DynamicResource ProjectTitle}" />
+                    <DatePicker x:Name="startDateEntry"
+                                Style="{StaticResource DatePicker}"
+                                Grid.Row="5"
+                                Grid.ColumnSpan="2" />
+                    <Label Grid.Row="6"
+                           Text="ENDDATE"
+                           Style="{DynamicResource ProjectTitle}" />
+                    <DatePicker Grid.Row="7"
+                                Grid.ColumnSpan="2"
+                                x:Name="endDateEntry"
+                                Style="{DynamicResource DatePicker}" />
+                    <Label Text="DESCRIPTION"
+                           Style="{StaticResource ProjectTitle}"
+                           Grid.Row="8" />
+                    <Entry Grid.Row="9"
+                           Grid.ColumnSpan="2"
+                           x:Name="shortDescriptionEntry"
+                           Placeholder="Enter a short description"
+                           Style="{DynamicResource EntryStyle}" />
+                </Grid>
+                <Button x:Name="addProject"
+                        Text="ADD PROJECT"
+                        Clicked="AddProject"
+                        Style="{DynamicResource RegularButton}"
+                        Margin="5"></Button>
+                <ImageButton Style="{DynamicResource HomeButton}"
+                             Clicked="NavigateToHome"
+                             VerticalOptions="EndAndExpand"
+                             Margin="135,0,135,5"></ImageButton>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

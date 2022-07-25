@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:DuboisAnke_Project.Model;assembly=DuboisAnke_Project"
+             xmlns:converter="clr-namespace:DuboisAnke_Project.Converter;assembly=DuboisAnke_Project"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             x:Class="DuboisAnke_Project.View.ProjectDetails">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DateConverter x:Key="dateConverter" />
+            <converter:HeightRequestConverter x:Key="Height" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame Margin="15"
+                       Style="{DynamicResource FrameStyle}">
+                    <Grid x:Name="GridMilestoneDetails">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="120"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="165"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="NAME: "
+                               Style="{DynamicResource ProjectTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="{Binding Name}"
+                               Style="{DynamicResource ProjectTextCard}" />
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="STARTDATE: "
+                               Style="{DynamicResource ProjectTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding StartDate, Mode=OneTime, Converter={StaticResource dateConverter}}"
+                               Style="{DynamicResource ProjectTextCard}" />
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="ENDDATE: "
+                               Style="{DynamicResource ProjectTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding EndDate, Mode=OneTime, Converter={StaticResource dateConverter}}"
+                               Style="{DynamicResource ProjectTextCard}" />
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="TIME LEFT: "
+                               Style="{DynamicResource ProjectTitleCard}"
+                               TextDecorations="Underline" />
+                        <progressBar:SfCircularProgressBar x:Name="ProjectCircBar"
+                                                           Grid.Row="3"
+                                                           Grid.Column="1"
+                                                           Progress="{Binding Progress}"
+                                                           ProgressColor="{Binding ColourHex}" />
+                        <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Text="DESCRIPTION: "
+                               Style="{DynamicResource ProjectTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="4"
+                               Grid.Column="1"
+                               Text="{Binding Description}"
+                               Style="{DynamicResource ProjectTextCard}" />
+                    </Grid>
+                </Frame>
+                <StackLayout>
+                    <Label x:Name="lblAreThereMilestones"
+                           Style="{DynamicResource MilestoneTitle}"></Label>
+                    <Button x:Name="btnSortMilestones"
+                            Text="Show me what I need to do first!"
+                            Clicked="SortMilestones"
+                            Style="{DynamicResource HighlightButton}"
+                            IsVisible="True" />
+                    <ListView x:Name="MilestonesListView"
+                              ItemSelected="MilestoneWasSelected"
+                              HeightRequest="{Binding Source={StaticResource defaultValue}, Mode=OneTime, Converter={StaticResource Height}}"
+                              Margin="15,0,15,0"
+                              IsVisible="True" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="150"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="150"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0"
+                                               Grid.Column="0"
+                                               Text="{Binding Name}"
+                                               Style="{DynamicResource MilestoneTitle}"></Label>
+                                        <Label x:Name="lblDeadlineMilestone"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Text="{Binding EndDate, Mode=OneTime, Converter={StaticResource dateConverter}}"
+                                               Style="{DynamicResource MilestoneText}"></Label>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <ImageButton Style="{DynamicResource HomeButton}"
+                             Clicked="NavigateToHome"></ImageButton>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

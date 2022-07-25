@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:converter="clr-namespace:DuboisAnke_Project.Converter;assembly=DuboisAnke_Project"
+            xmlns:view="clr-namespace:DuboisAnke_Project.View;assembly=DuboisAnke_Project"
+            x:Class="DuboisAnke_Project.View.HomePage">
+
+    <FlyoutPage.Flyout>
+        <view:FlyoutMenu x:Name="flyout"></view:FlyoutMenu>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <view:Welcome></view:Welcome>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+
+</FlyoutPage>

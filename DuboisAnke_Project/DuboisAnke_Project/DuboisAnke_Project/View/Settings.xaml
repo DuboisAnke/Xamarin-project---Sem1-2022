@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuboisAnke_Project.View.Settings">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Label Text="SETTINGS"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="34"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="WHAT'S YOUR NAME?"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="26" />
+                <Entry x:Name="userNameEntry"
+                       Placeholder="Enter your preferred name"
+                       Style="{DynamicResource EntryStyle}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnSetUsername"
+                            Text="SET"
+                            Clicked="SetUsernamePreference"
+                            Style="{DynamicResource RegularButton}"
+                            HorizontalOptions="EndAndExpand" />
+                    <Button x:Name="btnClearUsername"
+                            Grid.Column="1"
+                            Text="CLEAR"
+                            Clicked="ClearUsernamePreference"
+                            Style="{DynamicResource RegularButton}"
+                            HorizontalOptions="StartAndExpand" />
+                </Grid>
+                <Label Text="CHANGE YOUR PASSWORD"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="26" />
+                <Label Text="EMAIL"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="22" />
+                <Entry x:Name="emailEntry"
+                       Placeholder="Enter your email"
+                       Style="{DynamicResource EntryStyle}" />
+                <Label Text="OLD PASSWORD"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="22" />
+                <Entry x:Name="oldPasswordEntry"
+                       IsPassword="True"
+                       Placeholder="Enter your old password"
+                       Style="{DynamicResource EntryStyle}" />
+                <Label Text="NEW PASSWORD"
+                       Style="{DynamicResource RegularTitle}"
+                       FontSize="22" />
+                <Entry x:Name="newPasswordEntry"
+                       IsPassword="True"
+                       Placeholder="Enter your new pasword"
+                       Style="{DynamicResource EntryStyle}" />
+                <Button x:Name="btnChangePassword"
+                        Text="CHANGE PASSWORD"
+                        Clicked="BtnChangePassword_OnClicked"
+                        Style="{DynamicResource HighlightButton}"></Button>
+                <ImageButton Style="{DynamicResource HomeButton}"
+                             Clicked="NavigateToHome"
+                             VerticalOptions="EndAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

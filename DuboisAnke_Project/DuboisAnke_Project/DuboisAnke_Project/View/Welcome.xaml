@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:DuboisAnke_Project.Model;assembly=DuboisAnke_Project"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:converter="clr-namespace:DuboisAnke_Project.Converter;assembly=DuboisAnke_Project"
+             x:Class="DuboisAnke_Project.View.Welcome"
+             x:DataType="model:Project">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:HeightRequestConverter x:Key="Height" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="lblUsername"
+                       Style="{DynamicResource RegularTitle}"
+                       Grid.Column="1"
+                       FontSize="24"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,15,0,0" />
+                <StackLayout HeightRequest="250">
+                    <Label Text="Take a look at what you need to finish first : "
+                           Style="{DynamicResource RegularText}"
+                           HorizontalTextAlignment="Center"
+                           FontSize="18" />
+                    <ListView ItemSelected="ProjectWasSelected"
+                              HasUnevenRows="True"
+                              HeightRequest="{Binding Source={StaticResource defaultValue}, Mode=OneTime, Converter={StaticResource Height}}"
+                              Margin="50,0,50,0"
+                              x:Name="SelectedProjectList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame Style="{DynamicResource FrameStyle}"
+                                           Margin="5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Grid.ColumnSpan="2"
+                                                   Text="CLOSEST DEADLINE: "
+                                                   Style="{DynamicResource ProjectTitleCard}"
+                                                   Padding="0,5,0,0" />
+                                            <Label Grid.Row="1"
+                                                   Text="{Binding Name}"
+                                                   Style="{DynamicResource ProjectTextCard}"
+                                                    />
+                                            <StackLayout Grid.Row="1"
+                                                         Grid.Column="1"
+                                                         BackgroundColor="#f5f5f5">
+                                                <progressBar:SfCircularProgressBar x:Name="ProjectCircBar"
+                                                                                   Progress="{Binding Progress}"
+                                                                                   ProgressColor="{Binding ColourHex}"
+                                                                                   HeightRequest="75"
+                                                                                   VerticalOptions="Center"
+                                                                                   BackgroundColor="#f5f5f5" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand"
+                             Margin="25">
+                    <Label Text="Feeling unmotivated? Take a second to read this :"
+                           Style="{DynamicResource RegularText}"
+                           HorizontalTextAlignment="Center"
+                           FontSize="18"></Label>
+                    <Frame Style="{DynamicResource FrameStyle}">
+                        <Label x:Name="lblQuote"
+                               Style="{DynamicResource QuoteStyle}"
+                               HorizontalTextAlignment="Center"></Label>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

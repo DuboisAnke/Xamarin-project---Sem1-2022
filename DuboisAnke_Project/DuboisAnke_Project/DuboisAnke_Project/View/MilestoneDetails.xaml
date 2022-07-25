@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:model="clr-namespace:DuboisAnke_Project.Model;assembly=DuboisAnke_Project"
+             xmlns:converter="clr-namespace:DuboisAnke_Project.Converter;assembly=DuboisAnke_Project"
+             x:DataType="model:Milestone"
+             x:Class="DuboisAnke_Project.View.MilestoneDetails">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DateConverter x:Key="dateConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame Margin="15"
+                       Style="{DynamicResource FrameStyle}">
+                    <Grid x:Name="GridMilestoneDetails">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="150"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="162"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="NAME: "
+                               Style="{DynamicResource MilestoneTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="{Binding Name}"
+                               Style="{DynamicResource MilestoneTextCard}" />
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="STARTDATE: "
+                               Style="{DynamicResource MilestoneTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding StartDate, Mode=OneTime, Converter={StaticResource dateConverter}}"
+                               Style="{DynamicResource MilestoneTextCard}" />
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="ENDDATE: "
+                               Style="{DynamicResource MilestoneTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding EndDate, Mode=OneTime, Converter={StaticResource dateConverter}}"
+                               Style="{DynamicResource MilestoneTextCard}" />
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="PROGRESS: "
+                               Style="{DynamicResource MilestoneTitleCard}"
+                               TextDecorations="Underline" />
+                        <progressBar:SfCircularProgressBar x:Name="ProjectCircBar"
+                                                           Grid.Row="3"
+                                                           Grid.Column="1"
+                                                           Progress="{Binding Progress}"
+                                                           ProgressColor="{Binding ColourHex}" />
+                        <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Text="DESCRIPTION: "
+                               Style="{DynamicResource MilestoneTitleCard}"
+                               TextDecorations="Underline" />
+                        <Label Grid.Row="4"
+                               Grid.Column="1"
+                               Text="{Binding Description}"
+                               Style="{DynamicResource MilestoneTextCard}" />
+                        <ImageButton x:Name="BtnMilestoneFinished"
+                                     Command="{Binding MilestoneFinished}"
+                                     HorizontalOptions="EndAndExpand"
+                                     Margin="0,0,25,0"
+                                     Style="{DynamicResource DoneButton}"
+                                     Grid.Row="5">
+                        </ImageButton>
+                        <ImageButton x:Name="BtnDeleteMilestone"
+                                     Command="{Binding RemoveMilestone}"
+                                     Grid.Column="1"
+                                     HorizontalOptions="StartAndExpand"
+                                     Margin="25,0,0,0"
+                                     Style="{DynamicResource DeleteButton}"
+                                     Grid.Row="5">
+                        </ImageButton>
+                    </Grid>
+                  
+                </Frame>
+               
+                <ImageButton Style="{DynamicResource HomeButton}"
+                             Clicked="NavigateToHome"
+                             VerticalOptions="EndAndExpand"></ImageButton>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

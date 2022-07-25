@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DuboisAnke_Project.View.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="EMAIL"
+                   Style="{DynamicResource RegularTitle}"
+                   FontSize="28" />
+            <Entry x:Name="emailEntry"
+                   Style="{DynamicResource EntryStyle}"
+                   Placeholder="Enter your email adress" />
+            <Label Text="PASSWORD"
+                   Style="{DynamicResource RegularTitle}"
+                   FontSize="28" />
+            <Entry x:Name="passwordEntry"
+                   IsPassword="True"
+                   Style="{DynamicResource EntryStyle}"
+                   Placeholder="Enter your password" />
+            <Button x:Name="loginBtn"
+                    Text="LOGIN"
+                    Clicked="LoginUser"
+                    Style="{DynamicResource HighlightButton}" />
+            <Label Text="Don't have an account yet? "
+                   Style="{DynamicResource RegularText}"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,25,0,0"
+                   FontSize="18" />
+            <Button x:Name="registerBtn"
+                    Text="REGISTER"
+                    Clicked="NavigateToRegister"
+                    Style="{DynamicResource RegularButton}" />
+            <ImageButton Style="{DynamicResource HomeButton}"
+                         Clicked="NavigateToHome"
+                         VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

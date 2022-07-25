@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DuboisAnke_Project.Model;assembly=DuboisAnke_Project"
+             xmlns:view="clr-namespace:DuboisAnke_Project.View;assembly=DuboisAnke_Project"
+             x:Class="DuboisAnke_Project.View.FlyoutMenu"
+             Title="FlyoutMenu">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout BackgroundColor="#4A4E69"
+                         HeightRequest="55">
+                <Image Source="logolightversion.png"
+                       HeightRequest="45"
+                       Margin="15,5,0,0"
+                       HorizontalOptions="StartAndExpand"></Image>
+            </StackLayout>
+
+            <ListView x:Name="listview"
+                      x:FieldModifier="public">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:FlyoutItemPage}">
+                        <local:FlyoutItemPage Title="PROJECTS"
+                                              IconSource="projecticon.png"
+                                              TargetPage="{x:Type view:ProjectList}" />
+                        <local:FlyoutItemPage Title="ADD A PROJECT"
+                                              IconSource="addicon.png"
+                                              TargetPage="{x:Type view:ProjectAdd}" />
+                        <local:FlyoutItemPage Title="ADD A MILESTONE"
+                                              IconSource="addicon.png"
+                                              TargetPage="{x:Type view:MilestoneAdd}" />
+                        <local:FlyoutItemPage Title="LOGIN"
+                                              IconSource="loginicon.png"
+                                              TargetPage="{x:Type view:Login}" />
+                        <local:FlyoutItemPage Title="REGISTER"
+                                              IconSource="registericon.png"
+                                              TargetPage="{x:Type view:Register}" />
+                        <local:FlyoutItemPage Title="SETTINGS"
+                                              IconSource="settingicon.png"
+                                              TargetPage="{x:Type view:Settings}" />
+                        <local:FlyoutItemPage Title="ABOUT"
+                                              IconSource="abouticon.png"
+                                              TargetPage="{x:Type view:About}" />
+                        <local:FlyoutItemPage Title="PRIVACY"
+                                              IconSource="privacyicon.png"
+                                              TargetPage="{x:Type view:Privacy}"
+                                              />
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="75"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding IconSource}"
+                                       Margin="5"></Image>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Title}"
+                                       Style="{DynamicResource FlyoutMenuTextColor}"
+                                       FontSize="18"
+                                       VerticalTextAlignment="Center"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label x:Name="lblLoggedinUser"
+                   Style="{DynamicResource FlyoutMenuTextColor}"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,10"
+                   FontSize="18" />
+            <Button x:Name="btnLogout"
+                    Style="{DynamicResource HighlightButton}"
+                    Text="LOGOUT"
+                    Margin="0,0,0,15"
+                    Clicked="btnLogoutClicked"
+                    />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
