@@ -6,7 +6,7 @@ namespace DuboisAnke_Project.Data
 {
     public class Auth
     {
-        public static string APIkey = "AIzaSyCi0Hd8zJq37SgYyyDuCXPBpqh4Rgt7hLY";
+        public static string APIkey;
 
     }
 }
